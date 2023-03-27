@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+.canvas-parent {
+  border: 1px solid d3d3d3;
+  width: 100%;
+  resize: both;
+  overflow: auto;
+  position: relative;
+  height: calc(100vh - 100px);
+  z-index: 2; /* necessary to keep resize handle above canvas */
+}
+
+.canvas-chart {
+  position: absolute;
+}
