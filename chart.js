@@ -5,6 +5,10 @@ const canvas = document.querySelector(".canvas-chart");
 const canvasParent = canvas.parentNode;
 const ctx = canvas.getContext("2d");
 
+const xTicks = data.length;
+const yMin = Math.min(...data);
+const yMax = Math.max(...data);
+
 function outputsize() {
     ctx.canvas.width = canvasParent.offsetWidth;
     ctx.canvas.height = canvasParent.offsetHeight;
@@ -14,14 +18,10 @@ function outputsize() {
 new ResizeObserver(outputsize).observe(canvasParent);
 
 function draw(context) {
-    const xTicks = data.length;
-    const canvasWidth = ctx.canvas.width;
-    const canvasHeight = ctx.canvas.height;
+    const canvasWidth = context.canvas.width;
+    const canvasHeight = context.canvas.height;
 
     const xAxisPX = canvasWidth / xTicks;
-
-    const yMin = Math.min(...data);
-    const yMax = Math.max(...data);
     const yAxisCoeff = canvasHeight / (yMin - yMax); // flipVertical: yMax - yMin
 
     for (i = 0; i < data.length; i++) {
